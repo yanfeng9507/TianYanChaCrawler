@@ -79,6 +79,7 @@ public class GetExcel {
             row.createCell(15).setCellValue("英文名称");
             row.createCell(16).setCellValue("注册地址");
             row.createCell(17).setCellValue("经营范围");
+            row.createCell(18).setCellValue("法定代表人");
 
 
             FileOutputStream outputStream = new FileOutputStream(xlsxFile);
@@ -125,6 +126,9 @@ public class GetExcel {
                         }
                     }
                 }
+                Element element = tbodys.get(0);
+                Element aElement = element.select("a").get(0);
+                messageList.add(aElement.text());
                 Row row1 = sheet.createRow(rowNum++);
                 for (int i = 0; i < messageList.size(); i++) {
                     row1.createCell(i).setCellValue(messageList.get(i));
