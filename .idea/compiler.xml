@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="crawler" />
+        <module name="learn" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="crawler" target="1.5" />
+      <module name="crawler" target="1.8" />
+      <module name="learn" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

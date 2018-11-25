@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<configuration>
+
+	<!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%-5level] [%thread] %X{client} %X{traceId} %d{HH:mm:ss} %logger => %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 系统日志文件输出 -->
+	<appender name="file"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>log/crawler-system.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>log/crawler.%d{yyyy-MM-dd}.log</FileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>[%-5level] [%thread] %X{client} %X{access-token} %X{traceId} %d{HH:mm:ss} %logger{36} => %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<appender name="file-error"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>log/crawler-error.log</File>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>log/crawler-error.%d{yyyy-MM-dd}.log</FileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>[%-5level] [%thread] %X{client} %X{access-token} %X{traceId} %d{HH:mm:ss} %logger{36} => %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<!-- httpclient 日志级别 -->
+	<logger name="org.apache" level="error" />
+	<logger name="httpclient" level="error" />
+	<!--自己项目的日志级别-->
+	<logger name="cn.xiaoyanol.crawler" level="error"/>
+
+	<!-- 日志级别 -->
+	<root level="info">
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+        <appender-ref ref="file-error" />
+	</root>
+
+</configuration>
