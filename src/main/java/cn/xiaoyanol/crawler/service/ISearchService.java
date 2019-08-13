@@ -1,10 +1,14 @@
 package cn.xiaoyanol.crawler.service;
 
-import cn.xiaoyanol.crawler.domain.search.SearchJsonRootBean;
+import cn.xiaoyanol.crawler.domain.search.Search;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * Description: 获取企业基本信息（含主要人员）
+ * Description: 搜索接口，有分页，默认查询 一页， 十条
+ * 返回结果字段含义看实体类注释
+ * @see Search
  *
  * @Author: chenyanfeng
  * @Date: 2018-11-23
@@ -20,7 +24,7 @@ public interface ISearchService {
      * @param sortType
      * @return
      */
-    SearchJsonRootBean getSearchResult(String companyName, String pageNum, String pageSize, String sortType);
+    List<Search> getSearchResult(String companyName, String pageNum, String pageSize, String sortType);
 
 
     /**
@@ -30,7 +34,7 @@ public interface ISearchService {
      * @param pageSize
      * @return
      */
-    SearchJsonRootBean getSearchResult(String companyName, String pageNum, String pageSize);
+    List<Search> getSearchResult(String companyName, String pageNum, String pageSize);
 
 
     /**
@@ -38,7 +42,7 @@ public interface ISearchService {
      * @param companyName
      * @return
      */
-    SearchJsonRootBean getSearchResult(String companyName);
+    List<Search> getSearchResult(String companyName);
 
 
 

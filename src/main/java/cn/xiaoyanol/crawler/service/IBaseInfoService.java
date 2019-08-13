@@ -1,10 +1,10 @@
 package cn.xiaoyanol.crawler.service;
 
-import cn.xiaoyanol.crawler.domain.baseinfo.BaseInfoJsonRootBean;
+import cn.xiaoyanol.crawler.domain.baseinfo.BaseInfo;
 
 /**
  * Created with IntelliJ IDEA.
- * Description: 获取企业基本信息（含主要人员）
+ * Description: 获取企业基本信息
  *
  * @Author: chenyanfeng
  * @Date: 2018-11-25
@@ -17,6 +17,6 @@ public interface IBaseInfoService {
      * @param companyId
      * @return
      */
-    BaseInfoJsonRootBean getBaseInfoResult(String companyId);
+    BaseInfo getBaseInfoResult(String companyId);
 
 }

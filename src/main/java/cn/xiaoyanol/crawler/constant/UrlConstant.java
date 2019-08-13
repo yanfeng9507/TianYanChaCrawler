@@ -10,14 +10,17 @@ package cn.xiaoyanol.crawler.constant;
  */
 public class UrlConstant {
 
-    /**
-     * 获取企业基本信息（含主要人员）
-     */
-    public static String BASE_INFO_URL = "https://api9.tianyancha.com/services/v3/t/common/baseinfoV5/";
 
     /**
-     * 搜索URL
+     * 公司搜索URL
      */
-    public static String SEARCH_RUL = "https://api9.tianyancha.com/services/v3/search/sNorV3/";
+    public static final String SEARCH_RUL = "https://api9.tianyancha.com/services/v3/search/sNorV4/";
+
+
+    /**
+     * 获取企业基本信息
+     */
+    public static final String BASE_INFO_URL = "https://api9.tianyancha.com/services/v3/t/common/baseinfoV5/";
+
 
 }
