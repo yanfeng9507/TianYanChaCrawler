@@ -2,7 +2,8 @@ package cn.xiaoyanol.crawler.domain.baseinfo;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.metadata.BaseRowModel;
-import lombok.*;
+import com.gitee.sunchenbin.mybatis.actable.annotation.Table;
+import lombok.EqualsAndHashCode;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,6 +15,7 @@ import lombok.*;
  */
 @EqualsAndHashCode(callSuper = true)
 @lombok.Data
+@Table(name = "t_baseinfo")
 public class BaseInfo extends BaseRowModel {
 
     @ExcelProperty(value = "企业id", index = 0)

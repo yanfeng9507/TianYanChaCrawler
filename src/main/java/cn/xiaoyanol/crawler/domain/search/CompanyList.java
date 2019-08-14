@@ -2,7 +2,6 @@
   * Copyright 2019 bejson.com 
   */
 package cn.xiaoyanol.crawler.domain.search;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 import java.util.List;

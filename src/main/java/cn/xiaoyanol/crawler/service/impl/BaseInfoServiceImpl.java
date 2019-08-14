@@ -36,13 +36,13 @@ public class BaseInfoServiceImpl implements IBaseInfoService {
     }
 
     @Override
-    public BaseInfo getBaseInfoResult(String companyId) {
+    public BaseInfo getBaseInfoResult(Long companyId) {
 
         try {
-            if (StringUtils.isBlank(companyId)) {
+            if (companyId == null) {
                 return null;
             }
-            CloseableHttpResponse response = HttpClientUtils.doGet(url+ URLEncoder.encode(companyId), this.headers, null);
+            CloseableHttpResponse response = HttpClientUtils.doGet(url+ URLEncoder.encode(companyId.toString()), this.headers, null);
 
             String s = EntityUtils.toString(response.getEntity());
 

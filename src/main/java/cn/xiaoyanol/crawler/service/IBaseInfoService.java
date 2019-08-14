@@ -17,6 +17,6 @@ public interface IBaseInfoService {
      * @param companyId
      * @return
      */
-    BaseInfo getBaseInfoResult(String companyId);
+    BaseInfo getBaseInfoResult(Long companyId);
 
 }

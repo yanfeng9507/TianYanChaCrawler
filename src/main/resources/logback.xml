@@ -1,52 +1,37 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-	<!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+	<jmxConfigurator />
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>[%-5level] [%thread] %X{client} %X{traceId} %d{HH:mm:ss} %logger => %msg%n</pattern>
+			<pattern>[%level] [%date{HH:mm:ss.SSS}] [%thread] [%mdc] %logger.%method:%line --> %message%n</pattern>
 		</encoder>
-	</appender>
-
-	<!-- 系统日志文件输出 -->
-	<appender name="file"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>log/crawler-system.log</File>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>log/crawler.%d{yyyy-MM-dd}.log</FileNamePattern>
-		</rollingPolicy>
-		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>[%-5level] [%thread] %X{client} %X{access-token} %X{traceId} %d{HH:mm:ss} %logger{36} => %msg%n</pattern>
-		</layout>
-	</appender>
-
-	<appender name="file-error"
-		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<File>log/crawler-error.log</File>
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>ERROR</level>
-			<onMatch>ACCEPT</onMatch>
-			<onMismatch>DENY</onMismatch>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
 		</filter>
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>log/crawler-error.%d{yyyy-MM-dd}.log</FileNamePattern>
-		</rollingPolicy>
-		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>[%-5level] [%thread] %X{client} %X{access-token} %X{traceId} %d{HH:mm:ss} %logger{36} => %msg%n</pattern>
-		</layout>
 	</appender>
 
-	<!-- httpclient 日志级别 -->
-	<logger name="org.apache" level="error" />
-	<logger name="httpclient" level="error" />
-	<!--自己项目的日志级别-->
-	<logger name="cn.xiaoyanol.crawler" level="error"/>
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/mybatis-generator.%d{yyyy-MM-dd}.%i.log.zip
+			</fileNamePattern>
+			<maxHistory>7</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>500MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%level] [%date{HH:mm:ss.SSS}] [%thread] [%mdc] %logger.%method:%line --> %message%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+	</appender>
 
-	<!-- 日志级别 -->
-	<root level="info">
-		<appender-ref ref="console" />
-		<appender-ref ref="file" />
-        <appender-ref ref="file-error" />
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
 	</root>
 
 </configuration>
